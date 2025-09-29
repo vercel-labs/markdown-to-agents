@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
             {
               type: "header",
               key: "accept",
+              // Simplified for understandability. See file for full version
               value: "(.*)text/markdown(.*)",
             },
           ],
