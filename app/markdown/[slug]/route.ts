@@ -11,12 +11,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  
-  // Extract domain from the request
-  const url = new URL(request.url);
-  const domain = `${url.protocol}//${url.host}`;
-  
-  const content = loadDoc(slug, domain);
+  const content = loadDoc(slug);
   return new Response(content, {
     headers: { "Content-Type": "text/markdown" },
   });
