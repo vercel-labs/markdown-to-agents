@@ -1,4 +1,4 @@
-Demo project for delivering markdown to agents and HTML to users.
+Demo project for delivering markdown to agents and HTML to humans.
 
 ## Demo
 
