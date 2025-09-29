@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
             {
               type: "header",
               key: "accept",
-              value: "(.*)text/markdown(.*)",
+              // Have text/markdown or text/plain but before any text/html
+              // Note, that Claude Code currently requests text/plain
+              value:
+                "(?=.*(?:text/plain|text/markdown))(?!.*text/html.*(?:text/plain|text/markdown)).*",
             },
           ],
         },
