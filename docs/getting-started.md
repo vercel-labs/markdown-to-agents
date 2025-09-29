@@ -6,6 +6,8 @@ Try requesting this page like an agent would:
  curl -H "Accept: text/markdown" https://markdown-to-agents.vercel.app/docs/getting-started
 ```
 
+# Demo content
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
