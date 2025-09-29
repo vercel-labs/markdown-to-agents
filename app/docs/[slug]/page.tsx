@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { availableDocs, loadDoc } from "../docs";
+import { headers } from "next/headers";
 
 interface DocsPageProps {
   params: Promise<{
@@ -16,7 +17,13 @@ export const generateStaticParams = async () => {
 export default async function DocsPage({ params }: DocsPageProps) {
   const { slug } = await params;
 
-  const content = loadDoc(slug);
+  // Get the current domain from headers
+  const headersList = await headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'https';
+  const domain = `${protocol}://${host}`;
+
+  const content = loadDoc(slug, domain);
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
       <div className="bg-white">

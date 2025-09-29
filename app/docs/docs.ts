@@ -10,7 +10,7 @@ export const availableDocs = [
   "examples",
 ];
 
-export function loadDoc(slug: string) {
+export function loadDoc(slug: string, domain?: string) {
   // Check if the requested doc exists
   if (!availableDocs.includes(slug)) {
     notFound();
@@ -22,5 +22,11 @@ export function loadDoc(slug: string) {
   } catch {
     notFound();
   }
+
+  // Replace domain placeholder with actual domain if provided
+  if (domain) {
+    content = content.replace(/{{DOMAIN}}/g, domain);
+  }
+
   return content;
 }
